@@ -1,4 +1,38 @@
 <!-- Structure for the client side webpage -->
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Load Fonts -->
+        <link href="" rel="stylesheet">
+        <!-- Load CSS -->
+        <link rel="stylesheet" href="style.css">
+        <title>Weather Journal App</title>
+    </head>
+    <body>
+        <div id="app">
+            <div class="XYZ header">
+                Weather Journal App
+            </div>
+            <div class="XYZ zip">
+                <label for="zip-code">Enter ZIP Code here</label>
+                <input type="text" id="zip-code" placeholder="e.g. 14473">
+            </div>
+            <div class="XYZ feeling">
+                <label for="feelings">How do you feel today?</label>
+                <textarea class="myInput" id="feelings" placeholder="Please enter how you feel here" rows="8" cols="50"></textarea>
+                <button id="generate" type="submit">XYZ</button>
+            </div>
+            <div class="XYZ entry">
+                <div class="title">Latest Entry</div>
+                <div id="entryXYZ">
+                    <div id="date"></div>
+                    <div id="temperature"></div>
+                    <div id="content"></div>
+                </div>
+            </div>
+        </div>
+        <script src="app.js" type="text/javascript"></script>
+    </body>
 </html>
