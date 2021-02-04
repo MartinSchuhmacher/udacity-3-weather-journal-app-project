@@ -24,9 +24,11 @@ let justDoIt = event => {
             date: currentDate,
             userResponse: userResponse
         };
-        postWeather('/add', postData)
+        postWeather('/add', postData);
     })
-    .then(getPostedWeather('/all'));
+    .then(function() {
+        getPostedWeather('/all');
+    })
 }
 
 // Event listener to add function to existing HTML DOM element
@@ -76,7 +78,6 @@ const getPostedWeather = async (url = '') => {
         document.getElementById('temperature').innerHTML = lastEntry.temperature;
         document.getElementById('content').innerHTML = lastEntry.userResponse;
         console.log(lastEntry);
-        //TODO: right now it takes not the correct last element but the array before attaching the new post
     }
     catch(error) {
         console.log('Something went wrong while GET: ', error);

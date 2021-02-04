@@ -25,13 +25,12 @@ app.use(express.static('website'));
 // Setup Port to use for Server
 const port = 3000;
 
-// Callback to debug
-let listening = () => {
-    console.log(`INFO: server running smoothly on localhost: ${port}`);
-}
-
 // Spin up the server
 const server = app.listen(port, listening);
+// Callback to debug
+function listening() {
+    console.log(`INFO: server running smoothly on localhost: ${port}`);
+}
 
 // Initialize all route with a callback function
 app.get('/all', (req, res) => res.send(projectData));
@@ -39,7 +38,9 @@ app.get('/all', (req, res) => res.send(projectData));
 // Callback function to complete GET '/all'
 
 // Post Route
-let addEntry = (request) => {
+app.post('/add', addEntry);
+
+function addEntry(request) {
     console.log(request.body);
     let newData = request.body;
     let newEntry = {
@@ -50,4 +51,3 @@ let addEntry = (request) => {
     projectData.push(newEntry);
     console.log(projectData);
 }
-app.post('/add', addEntry);
