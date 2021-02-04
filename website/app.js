@@ -8,9 +8,14 @@ let justDoIt = event => {
     const newZip = document.getElementById('zip-code').value.trim();
     const userResponse = document.getElementById('feelings').value;
     const rawDate = new Date();
-    // Formate date more pretty
-    //TODO: 1 digit minutes
-    const currentDate = `${rawDate.getDate()}.${rawDate.getMonth()}.${rawDate.getFullYear()} ${rawDate.getHours()}:${rawDate.getMinutes()}`;
+    // Formate date more pretty with additional handling for 1 digit minutes
+    let currentDate = '';
+    if (rawDate.getMinutes < 10) {
+        currentDate = `${rawDate.getDate()}.${rawDate.getMonth()}.${rawDate.getFullYear()} ${rawDate.getHours()}:0${rawDate.getMinutes()}`;
+    }
+    else {
+        currentDate = `${rawDate.getDate()}.${rawDate.getMonth()}.${rawDate.getFullYear()} ${rawDate.getHours()}:${rawDate.getMinutes()}`;
+    }
     getWeather(baseURL, newZip, apiKey)
     .then(function(weatherData) {
         const temperature = `${weatherData.main.temp}°C`;
