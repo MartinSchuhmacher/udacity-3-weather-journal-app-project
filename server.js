@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Cors for cross origin allowance
-app.use(cors);
+app.use(cors());
 
 // Initialize the main project folder (with client-side code)
 app.use(express.static('website'));
@@ -34,14 +34,13 @@ let listening = () => {
 const server = app.listen(port, listening);
 
 // Initialize all route with a callback function
+app.get('/all', (req, res) => res.send(projectData));
 
 // Callback function to complete GET '/all'
 
 // Post Route
-
-
-//TODO
-let addEntry = request => {
+let addEntry = (request) => {
+    console.log(request.body);
     let newData = request.body;
     let newEntry = {
         temperatur: newData.temperatur,
@@ -50,7 +49,4 @@ let addEntry = request => {
     }
     projectData.push(newEntry);
 }
-
-app.get('/all', (req, res) => res.send(projectData));
 app.post('/add', addEntry);
-
