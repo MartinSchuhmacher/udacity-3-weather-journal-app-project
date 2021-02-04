@@ -11,3 +11,9 @@ This is the repository for **Project 3: Weather Journal App** of the Udacity Fro
 * instead of promises (resolve/reject) using `async` functions to make use of `await`, `try` and `catch`
 * Fetch API to use Request and Response objects
 * GET/POST routes
+
+
+## Steps to start
+* download repository and set environment
+* check Node.js installation in Terminal with `node --version`
+* install Express, Body-Parser and Cors with npm (included with Node.js) by `npm install` (set via the package-lock.json)
