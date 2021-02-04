@@ -43,10 +43,11 @@ let addEntry = (request) => {
     console.log(request.body);
     let newData = request.body;
     let newEntry = {
-        temperatur: newData.temperatur,
+        temperature: newData.temperature,
         date: newData.date,
         userResponse: newData.userResponse
     }
     projectData.push(newEntry);
+    console.log(projectData);
 }
 app.post('/add', addEntry);

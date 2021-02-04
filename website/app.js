@@ -4,12 +4,16 @@ let apiKey = 'a4dc5a01d56a79d90c555f8f638b801b';
 
 // Function called by event listener 
 let justDoIt = event => {
-    const newZip = document.getElementById('zip-code').value;
+    // Added trim() to remove surrounding spaces in zip field
+    const newZip = document.getElementById('zip-code').value.trim();
     const userResponse = document.getElementById('feelings').value;
-    const currentDate = new Date();
+    const rawDate = new Date();
+    // Formate date more pretty
+    //TODO: 1 digit minutes
+    const currentDate = `${rawDate.getDate()}.${rawDate.getMonth()}.${rawDate.getFullYear()} ${rawDate.getHours()}:${rawDate.getMinutes()}`;
     getWeather(baseURL, newZip, apiKey)
     .then(function(weatherData) {
-        const temperature = weatherData.main.temp;
+        const temperature = `${weatherData.main.temp}°C`;
         const postData = {
             temperature: temperature,
             date: currentDate,
@@ -17,6 +21,7 @@ let justDoIt = event => {
         };
         postWeather('/add', postData)
     })
+    .then(getPostedWeather('/all'));
 }
 
 // Event listener to add function to existing HTML DOM element
@@ -24,7 +29,7 @@ document.getElementById('generate').addEventListener('click', justDoIt);
 
 // Function to GET Web API Data
 const getWeather = async (baseURL, zip, apiKey) => {
-    const result = await fetch(`${baseURL}${zip},de&appid=${apiKey}`);
+    const result = await fetch(`${baseURL}${zip},de&appid=${apiKey}&units=metric`);
     try {
         const weatherData = await result.json();
         console.log(weatherData);
@@ -48,7 +53,6 @@ const postWeather = async (url = '', data = {}) => {
     });
     try {
         const newData = await response;
-        console.log(newData);
         return newData;
     }
     catch(error) {
@@ -57,3 +61,19 @@ const postWeather = async (url = '', data = {}) => {
 }
 
 /* Function to GET Project Data */
+const getPostedWeather = async (url = '') => {
+    const response = await fetch(url);
+    try {
+        const allData = await response.json();
+        //choose slice instead of index "-1" to choose last element because slice takes in comparison only 5% of the time
+        const lastEntry = allData.slice(-1)[0];
+        document.getElementById('date').innerHTML = lastEntry.date;
+        document.getElementById('temperature').innerHTML = lastEntry.temperature;
+        document.getElementById('content').innerHTML = lastEntry.userResponse;
+        console.log(lastEntry);
+        //TODO: right now it takes not the correct last element but the array before attaching the new post
+    }
+    catch(error) {
+        console.log('Something went wrong while GET: ', error);
+    }
+}
