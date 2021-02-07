@@ -50,7 +50,7 @@ body{
     height: min-content;
 }
 
-#entryHolder{
+#entry-holder{
     display: flex;
     flex-direction: column;
     padding: 0 10px 0 10px;
@@ -65,7 +65,7 @@ body{
 }
 
 #icon {
-    padding: 3px 0 3px 0;
+    padding: 0;
     width: max-content;
     height: max-content;
     border-radius: 90px;
