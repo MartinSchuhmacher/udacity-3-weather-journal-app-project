@@ -16,4 +16,5 @@ This is the repository for **Project 3: Weather Journal App** of the Udacity Fro
 ## Steps to start
 * download repository
 * check Node.js installation in Terminal with `node --version` and install if not
-* install Express `npm install express`, Body-Parser `npm install body-parser` and Cors `npm install cors` with npm (included with Node.js)
+* install dependencies via npm (included with Node.js) with `npm install` from package.json
+* Credits to https://pravnyadv.github.io/unpackage/ for creation of package.json from package-lock.json

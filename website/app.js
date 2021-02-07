@@ -18,7 +18,7 @@ let justDoIt = event => {
     }
     getWeather(baseURL, newZip, apiKey)
     .then(function(weatherData) {
-        const temperature = `${weatherData.main.temp}°C`;
+        const temperature = `${weatherData.main.temp.toFixed(0)}°C`;
         const postData = {
             temperature: temperature,
             date: currentDate,
