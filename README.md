@@ -24,12 +24,6 @@ This is the repository for **Project 3: Weather Journal App** of the Udacity Fro
 
 ---
 
-### Want to have a look? 
-Simply download the project and open "index.html" in your favorite web browser.
-The project is also deployed on [GitHub Pages](https://martinschuhmacher.github.io/udacity-2-landing-page-project/).
-
----
-
 ### Social
 * [GitHub](https://github.com/MartinSchuhmacher)
 * [LinkedIn](https://www.linkedin.com/in/martinschuhmacher/)
