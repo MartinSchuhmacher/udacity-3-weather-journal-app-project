@@ -64,8 +64,14 @@ body{
     padding: 3px 0 3px 0;
 }
 
+#icon {
+    padding: 3px 0 3px 0;
+    width: max-content;
+    height: max-content;
+}
+
 #content{
-    max-width: 190px;
+    max-width: 130px;
     padding: 3px 0 0 0;
     word-wrap: break-word;
 }

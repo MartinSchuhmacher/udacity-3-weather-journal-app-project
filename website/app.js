@@ -10,7 +10,7 @@ let justDoIt = event => {
     const rawDate = new Date();
     // Formate date more pretty with additional handling for 1 digit minutes
     let currentDate = '';
-    if (rawDate.getMinutes < 10) {
+    if (rawDate.getMinutes() < 10) {
         currentDate = `${rawDate.getDate()}.${rawDate.getMonth()}.${rawDate.getFullYear()} ${rawDate.getHours()}:0${rawDate.getMinutes()}`;
     }
     else {
@@ -19,8 +19,10 @@ let justDoIt = event => {
     getWeather(baseURL, newZip, apiKey)
     .then(function(weatherData) {
         const temperature = `${weatherData.main.temp.toFixed(0)}°C`;
+        const icon = weatherData.weather[0].icon;
         const postData = {
             temperature: temperature,
+            icon: icon,
             date: currentDate,
             userResponse: userResponse
         };
@@ -74,8 +76,10 @@ const getPostedWeather = async (url = '') => {
         const allData = await response.json();
         //choose slice instead of index "-1" to choose last element because slice takes in comparison only 5% of the time
         const lastEntry = allData.slice(-1)[0];
+        const iconURL = `http://openweathermap.org/img/wn/${lastEntry.icon}.png`;
         document.getElementById('date').innerHTML = lastEntry.date;
         document.getElementById('temperature').innerHTML = lastEntry.temperature;
+        document.getElementById('icon').setAttribute("src", `${iconURL}`);
         document.getElementById('content').innerHTML = lastEntry.userResponse;
         console.log(lastEntry);
     }

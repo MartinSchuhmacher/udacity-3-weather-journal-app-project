@@ -45,6 +45,7 @@ function addEntry(request) {
     let newData = request.body;
     let newEntry = {
         temperature: newData.temperature,
+        icon: newData.icon,
         date: newData.date,
         userResponse: newData.userResponse
     }
