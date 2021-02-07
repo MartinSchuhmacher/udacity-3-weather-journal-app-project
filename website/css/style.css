@@ -68,6 +68,8 @@ body{
     padding: 3px 0 3px 0;
     width: max-content;
     height: max-content;
+    border-radius: 90px;
+    background: rgba(34, 178, 218, 0.4);
 }
 
 #content{

@@ -74,7 +74,7 @@ const getPostedWeather = async (url = '') => {
     const response = await fetch(url);
     try {
         const allData = await response.json();
-        //choose slice instead of index "-1" to choose last element because slice takes in comparison only 5% of the time
+        //choose slice instead of index "-1" to receive last element of endpoint array because slice takes in comparison only 5% of the time
         const lastEntry = allData.slice(-1)[0];
         const iconURL = `http://openweathermap.org/img/wn/${lastEntry.icon}.png`;
         document.getElementById('date').innerHTML = lastEntry.date;
