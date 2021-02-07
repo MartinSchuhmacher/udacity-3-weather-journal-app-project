@@ -19,8 +19,8 @@ This is the repository for **Project 3: Weather Journal App** of the Udacity Fro
 * check Node.js installation in Terminal with `node --version` and install if not present
 * install dependencies via npm (included with Node.js) with `npm install` from package.json
 * Credits to https://pravnyadv.github.io/unpackage/ for creation of package.json from package-lock.json
-* Start server in project folder with `node server.js`
-* Open browser with running server on chosen port - default `localhost:3000`
+* start server in project folder with `node server.js`
+* open browser with running server on chosen port - default `localhost:3000`
 
 ---
 
