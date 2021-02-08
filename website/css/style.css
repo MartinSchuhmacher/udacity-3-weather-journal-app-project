@@ -60,7 +60,7 @@ body{
     padding: 0 0 3px 0;
 }
 
-#temperature {
+#temp {
     padding: 3px 0 3px 0;
 }
 
@@ -92,7 +92,7 @@ label{
 input{
     display:block;
     height: 60px;
-    width: 100px;
+    width: 150px;
     background:rgba(34, 178, 218, 0.6);
     color: #f0d43a;
     font-size: 20px;

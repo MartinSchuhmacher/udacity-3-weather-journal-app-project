@@ -5,7 +5,7 @@ let apiKey = 'a4dc5a01d56a79d90c555f8f638b801b';
 // Function called by event listener 
 let justDoIt = event => {
     // Added trim() to remove surrounding spaces in zip field
-    const newZip = document.getElementById('zip-code').value.trim();
+    const newZip = document.getElementById('zip').value.trim();
     const userResponse = document.getElementById('feelings').value;
     const rawDate = new Date();
     // Formate date more pretty with additional handling for 1 digit minutes
@@ -18,10 +18,10 @@ let justDoIt = event => {
     }
     getWeather(baseURL, newZip, apiKey)
     .then(function(weatherData) {
-        const temperature = `${weatherData.main.temp.toFixed(0)}°C`;
+        const temp = `${weatherData.main.temp.toFixed(0)}°F`;
         const icon = weatherData.weather[0].icon;
         const postData = {
-            temperature: temperature,
+            temp: temp,
             icon: icon,
             date: currentDate,
             userResponse: userResponse
@@ -38,7 +38,7 @@ document.getElementById('generate').addEventListener('click', justDoIt);
 
 // Function to GET Web API Data
 const getWeather = async (baseURL, zip, apiKey) => {
-    const result = await fetch(`${baseURL}${zip},de&appid=${apiKey}&units=metric`);
+    const result = await fetch(`${baseURL}${zip}&appid=${apiKey}&units=imperial`);
     try {
         const weatherData = await result.json();
         console.log(weatherData);
@@ -74,14 +74,12 @@ const getPostedWeather = async (url = '') => {
     const response = await fetch(url);
     try {
         const allData = await response.json();
-        //choose slice instead of index "-1" to receive last element of endpoint array because slice takes in comparison only 5% of the time
-        const lastEntry = allData.slice(-1)[0];
-        const iconURL = `http://openweathermap.org/img/wn/${lastEntry.icon}.png`;
-        document.getElementById('date').innerHTML = lastEntry.date;
-        document.getElementById('temperature').innerHTML = lastEntry.temperature;
+        const iconURL = `http://openweathermap.org/img/wn/${allData.icon}.png`;
+        document.getElementById('date').innerHTML = allData.date;
+        document.getElementById('temp').innerHTML = allData.temp;
         document.getElementById('icon').setAttribute("src", `${iconURL}`);
-        document.getElementById('content').innerHTML = lastEntry.userResponse;
-        console.log(lastEntry);
+        document.getElementById('content').innerHTML = allData.userResponse;
+        console.log(allData);
     }
     catch(error) {
         console.log('Something went wrong while GET: ', error);

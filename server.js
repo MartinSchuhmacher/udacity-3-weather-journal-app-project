@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 // Setup empty JS object to act as endpoint for all routes
-const projectData = [];
+let projectData = {};
 
 // Start up an instance of app
 const app = express();
@@ -43,12 +43,11 @@ app.post('/add', addEntry);
 function addEntry(request) {
     console.log(request.body);
     let newData = request.body;
-    let newEntry = {
-        temperature: newData.temperature,
+    projectData = {
+        temp: newData.temp,
         icon: newData.icon,
         date: newData.date,
         userResponse: newData.userResponse
     }
-    projectData.push(newEntry);
     console.log(projectData);
 }
